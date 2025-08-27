@@ -77,8 +77,8 @@ document.addEventListener("mousemove", (e) => {
   const y = e.clientY;
 
   // radial-gradient의 원을 마우스 위치에 생성
-  curtain.style.webkitMaskImage = `radial-gradient(circle 50vh at ${x}px ${y}px, transparent 0%, black 80%)`;
-  curtain.style.maskImage = `radial-gradient(circle 50vh at ${x}px ${y}px, transparent 0%, black 80%)`;
+  curtain.style.webkitMaskImage = `radial-gradient(circle 70vh at ${x}px ${y}px, transparent 0%, black 80%)`;
+  curtain.style.maskImage = `radial-gradient(circle 70vh at ${x}px ${y}px, transparent 0%, black 80%)`;
 });
 
 
@@ -112,7 +112,7 @@ document.addEventListener('mousemove', (e) => {
   const dy = e.clientY - cy;
 
   // 반대방향(빛이 마우스에 있다고 가정) -> 음수 부호
-  const k = 12;                 // 값이 클수록 그림자 길이 짧아짐
+  const k = 10;                 // 값이 클수록 그림자 길이 짧아짐
   const ox = -dx / k;
   const oy = -dy / k;
 
