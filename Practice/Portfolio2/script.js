@@ -44,31 +44,33 @@ icons.forEach(icon => {
     icons.forEach(i => i.classList.remove("active"));
     icon.classList.add("active");
 
-    panels.forEach(panel => {
-      if (panel.id === `${icon.id}-panel`) {
-        panel.classList.add("active");
-      } else {
-        panel.classList.remove("active");
-      }
-    });
+    
+    panels.forEach(panel => panel.classList.remove("active"));
 
-    if (container.classList.contains("left-align")) return;
+    // ⬇️ 왼쪽 정렬 상태 확인
+    if (container.classList.contains("left-align")) {
+      // 이미 왼쪽 정렬된 경우 → 그냥 패널 교체
+      const targetPanel = document.getElementById(`${icon.id}-panel`);
+      if (targetPanel) targetPanel.classList.add("active");
+    } else {
+      // 메인에서 처음 들어가는 경우 → 애니메이션 끝난 후 panel 표시
+      title.classList.add("hide");
+      footer.classList.add("hide");
+      container.classList.add("hide");
 
-    // 사라지기
-    title.classList.add("hide");
-    footer.classList.add("hide");
-    container.classList.add("hide");
+      setTimeout(() => {
+        title.style.display = "none";
+        footer.style.display = "none";
+        home.style.display = "flex";
+        lightIcon.style.display = "none";
 
-    setTimeout(() => {
-      title.style.display = "none";
-      footer.style.display = "none";
-      // Home 아이콘 보이게
-      home.style.display = "flex";
-      lightIcon.style.display = "none";
-      // 왼쪽 정렬로 전환 후 다시 나타남
-      container.classList.remove("hide");
-      container.classList.add("left-align");
-    }, 300);
+        container.classList.remove("hide");
+        container.classList.add("left-align");
+
+        const targetPanel = document.getElementById(`${icon.id}-panel`);
+        if (targetPanel) targetPanel.classList.add("active");
+      }, 500);
+    }
   });
 });
 
@@ -141,3 +143,42 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('mouseleave', () => {
   title.style.textShadow = 'none';
 });
+
+
+// === Carousel ===
+const track = document.querySelector(".carousel-track");
+const cards = Array.from(track.querySelectorAll(".card"));
+
+let currentIndex = 0;
+
+function updateCarousel() {
+  cards.forEach((card, i) => {
+    card.classList.remove("active", "left", "right");
+    if (i === currentIndex) {
+      card.classList.add("active");
+    } else if (i === (currentIndex - 1 + cards.length) % cards.length) {
+      card.classList.add("left");
+    } else if (i === (currentIndex + 1) % cards.length) {
+      card.classList.add("right");
+    }
+  });
+}
+
+// === 카드 클릭 이벤트 ===
+cards.forEach((card, i) => {
+  card.addEventListener("click", () => {
+    if (card.classList.contains("left")) {
+      // 왼쪽 카드 클릭 → 이전으로 이동
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateCarousel();
+    } else if (card.classList.contains("right")) {
+      // 오른쪽 카드 클릭 → 다음으로 이동
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateCarousel();
+    }
+    // 가운데(active)는 클릭해도 아무 동작 X
+  });
+});
+
+// 초기 실행
+updateCarousel();
