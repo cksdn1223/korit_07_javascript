@@ -5,7 +5,7 @@ const icons = document.querySelectorAll(".icon");
 const home = document.getElementById("home");
 const lightIcon = document.getElementById("light");
 const curtain = document.querySelector(".curtain");
-
+const panels = document.querySelectorAll(".panel");
 // 아이콘 클릭 시
 icons.forEach(icon => {
   icon.addEventListener("click", () => {
@@ -15,19 +15,26 @@ icons.forEach(icon => {
       footer.style.display = "flex";
       home.style.display = "none";
       lightIcon.style.display = "flex";
+
       icons.forEach(i => i.classList.remove("active"));
+      panels.forEach(panel => panel.classList.remove("active"));
       container.classList.remove("left-align");
+
+      // 1단계: opacity 먼저 복원
       setTimeout(() => {
         container.classList.remove("hide");
+        // 3단계: 제목/푸터 복원
         title.classList.remove("hide");
         footer.classList.remove("hide");
+
         // 커튼 다시 켜기
         if (lightOn) {
           showCurtain();
         } else {
           hideCurtain();
         }
-      }, 50);
+
+      }, 500);
 
       return;
     }
@@ -36,6 +43,15 @@ icons.forEach(icon => {
     // active 표시
     icons.forEach(i => i.classList.remove("active"));
     icon.classList.add("active");
+
+    panels.forEach(panel => {
+      if (panel.id === `${icon.id}-panel`) {
+        panel.classList.add("active");
+      } else {
+        panel.classList.remove("active");
+      }
+    });
+
     if (container.classList.contains("left-align")) return;
 
     // 사라지기
@@ -46,7 +62,6 @@ icons.forEach(icon => {
     setTimeout(() => {
       title.style.display = "none";
       footer.style.display = "none";
-
       // Home 아이콘 보이게
       home.style.display = "flex";
       lightIcon.style.display = "none";
@@ -83,7 +98,8 @@ document.addEventListener("mousemove", (e) => {
 
 
 
-let lightOn = true; // 기본값: 켜져 있음
+let lightOn = false; // 기본값: 켜져 있음
+hideCurtain();
 
 light.addEventListener("click", () => {
   lightOn = !lightOn;

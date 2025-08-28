@@ -14,6 +14,7 @@ header {
   justify-content: center;
   align-items: center;
   font-size: 4em;
+  width: auto;
 }
 h1 {
   padding: 12vh;
@@ -26,7 +27,7 @@ h1 {
 .footer {
   opacity: 1;
   transform: translate(0,0);
-  transition: all 0.4s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .hide {
@@ -42,7 +43,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 50px;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 .icon {
   height: 66px;
@@ -119,10 +120,68 @@ h1 {
 /* 아이콘 왼쪽 정렬 모드 */
 .left-align {
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   height: 100vh;
-  padding: 0 2rem;
+  width: 10vw;
 }
+/* -- section -- */
+.panel {
+  position: absolute;
+  top: 0; right: 0;
+  width: 80%; height: 100%;
+  background: transparent;
+  opacity: 0;
+  transform: translateX(80%);
+  transition: all 0.4s ease;
+  /* background: gray; */
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.panel.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.panel .about-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+
+}
+.card {
+  background: rgba(255, 255, 255, 0.15); /* 투명 흰색 */
+  backdrop-filter: blur(12px); /* 유리 효과 */
+  -webkit-backdrop-filter: blur(12px); /* Safari 대응 */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* 유리 테두리 */
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2); /* 은은한 그림자 */
+  width: 260px; /* 개별 카드 크기 조정 */
+  height: 180px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-text {
+  color: white; /* 배경이 반투명하니까 흰색이 어울림 */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.card:hover .card-text {
+  opacity: 1;
+}
+
 
 /* ===== Footer ===== */
 footer {
