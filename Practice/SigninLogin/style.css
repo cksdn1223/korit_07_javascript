@@ -10,9 +10,12 @@ form.container {
   display: flex;
   flex-direction: column;
 }
+
 input {
-  height: 30px;
-  width: 300px;
+  height: 50px;
+  width: 400px;
+  font-size: 2rem;
+  padding: 5px;
   margin: 5px;
   border-radius: 15px;
   transition: 0.4s ease;
@@ -21,14 +24,15 @@ input {
   box-shadow: 0 1px 5px rgb(255, 255, 255);
   color: white;
 }
+
 input:focus {
+  background: #1b1b1b;
   outline: none;
-  box-shadow: 0 1px 5px rgb(116, 181, 255);
 }
 
 button {
-  width: 300px;
-  height: 30px;
+  height: 50px;
+  flex-grow: 1;
   margin: 5px;
   border-radius: 15px;
   border: none;
@@ -39,8 +43,10 @@ button {
 }
 button:hover {
   box-shadow: 0 1px 5px rgb(116, 181, 255);
+  background: #1b1b1b;;
   transform: scale(1.05);
 }
 button:active {
   transform: scale(0.98);
 }
+

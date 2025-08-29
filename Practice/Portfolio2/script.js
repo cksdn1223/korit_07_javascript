@@ -47,7 +47,7 @@ icons.forEach(icon => {
     
     panels.forEach(panel => panel.classList.remove("active"));
 
-    // ⬇️ 왼쪽 정렬 상태 확인
+    // 왼쪽 정렬 상태 확인
     if (container.classList.contains("left-align")) {
       // 이미 왼쪽 정렬된 경우 → 그냥 패널 교체
       const targetPanel = document.getElementById(`${icon.id}-panel`);

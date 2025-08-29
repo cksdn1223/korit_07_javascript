@@ -1,0 +1,33 @@
+@import url(../01_todolist.css);
+
+/* .todo-container {
+  width: auto;
+  max-width: none;
+} */
+
+.input-group input {
+  width: 0;
+}
+
+/* 아이디 선택자로 없던거 새로 추가 */
+#price-input {
+  flex-grow: 0.5;
+}
+
+
+.shopping-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.todo-item.completed .item-text, .completed .price{
+  text-decoration: line-through;
+  color: var(--completed-color);
+}
+.item-text {
+  flex-grow: 1;
+  font-size: 1.1rem;
+}
+.price {
+  font-size: 1.1rem;
+}

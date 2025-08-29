@@ -1,13 +1,30 @@
 const inputId = document.getElementById('inputId');
 const inputPw = document.getElementById('inputPw');
-
+const input = document.querySelector('.container');
+input.addEventListener('input', (event) => {
+  if(event.target.value !== "") event.target.style.boxShadow = '0 0 8px rgba(72, 255, 0, 1)';
+  else event.target.style.boxShadow = '0 0 8px rgba(255, 255, 255, 1)';
+});
 
 function login() {
-  const savedUser = JSON.parse(localStorage.getItem("user"));
-  if(inputId.value === savedUser.id && inputPw.value === savedUser.pw){
-    alert('로그인 성공');
+  const savedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+  const savedUser = savedUsers.find(user => user.id === inputId.value);
+
+  if (inputId.value === "" || inputPw.value === "") {
+    alert("비어있는 칸이 있습니다.");
+    return;
+  }
+
+  if (!savedUser) {
+    alert("아이디가 존재하지 않습니다.");
+    return;
+  }
+
+  if (inputPw.value === savedUser.pw) {
+    alert("로그인 성공");
   } else {
-    alert('아이디 혹은 비밀번호가 틀렸습니다.');
+    alert("비밀번호가 틀렸습니다.");
   }
 }
 
@@ -27,20 +44,21 @@ function createAccount() {
     alert('비어있는 칸이 있습니다.');
     return signin();
   }
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  if(users.find(user => user.id === username.value)){
+    createId.style.boxShadow = "0 1px 5px rgb(255, 0, 0)";
+
+  }
   const user = {
     name: username.value,
     id: createId.value,
     pw: createPw.value,
   }
-  localStorage.setItem("user", JSON.stringify(user));
+  
+  users.push(user);
+  localStorage.setItem("users", JSON.stringify(users));
   alert(username.value + '님 회원가입 성공!');
 }
 
-
-inputId.addEventListener("input", () => {
-  if (inputId.value === "") {
-    inputId.style.boxShadow = "0 1px 5px rgb(255, 63, 63)";
-  } else {
-    inputId.style.boxShadow = "0 1px 5px rgb(63, 255, 63)";
-  }
-});
