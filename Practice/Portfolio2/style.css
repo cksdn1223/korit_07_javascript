@@ -7,6 +7,7 @@ body {
   color: #111111;
   font-family: 'Do Hyeon', sans-serif;
   overflow: hidden;
+  transition: background 0.8s ease-in-out;
 }
 
 header {
@@ -267,61 +268,160 @@ h1 {
 }
 
 
-
+/* Project 패널 영역!! */
 #projects-panel{
-  background: gray;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-.project1,.project2,.project3{
+.project{
   position: absolute;
-  height: 500px;
-  width: 700px;
+  height: 300px;
+  width: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.4s ease;
 }
-.project1 {
+.project:nth-child(1) {
   background: burlywood;
   top: 5%;
   left: 5%;
 }
-.project2{
+.project:nth-child(2){
   background: skyblue;
 }
-.project3{
+.project:nth-child(3){
   background: yellowgreen;
   bottom: 5%;
   right: 5%;
 }
 
-.project1:hover,.project2:hover,.project3:hover{
+/* .project:hover{
+  transform: rotateZ(-5deg);
+  transition: transform 0.4s ease;
   z-index: 4;
+} */
+
+
+.project.active {
+  transform: scale(1.5);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  z-index: 10; /* 앞으로 튀어나오게 */
+  transition: all 0.4s ease;
+}
+.project.active:nth-child(1){
+  transform-origin: left top;
+}
+.project.active:nth-child(3){
+  transform-origin: right bottom;
 }
 
 
+/* SKills 패널 영역 */
+#skills-panel{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 80%;
+  /* right: -10%; */
+  height: 320px;
+  overflow: hidden;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bar{
+  background: red;
+  width: 95%;
+  height: 100px;
+  border-radius: 0 50px 50px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.skill-icon{
+  height: 90px;
+  width: 90px;
+  z-index: 1;
+  margin-left: 5px;
+  background: rgba(255, 255, 255, 0.226);
+  border-radius: 15px;
+}
+.gauge {
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+.percent{
+  position: absolute;
+  width: 99%;
+  z-index: 1;
+  display: flex;
+  justify-content: right;
+  font-size: 4rem;
+}
+
+.skill[data-skill="Java"] .skill-icon { background-image: url(../Portfolio2/resource/java-icon.svg);}
+.skill[data-skill="Java"] .gauge { background: #f89820; }
+.skill[data-skill="Java"] .bar { background: #ffe0b3; }
+
+.skill[data-skill="HTML"] .skill-icon { background-image: url(../Portfolio2/resource/html-icon.svg);}
+.skill[data-skill="HTML"] .gauge { background: #e34f26; }
+.skill[data-skill="HTML"] .bar { background: #f5c6b8; }
+
+.skill[data-skill="CSS"] .skill-icon { background-image: url(../Portfolio2/resource/css-icon.svg);}
+.skill[data-skill="CSS"] .gauge { background: #1572b6; }
+.skill[data-skill="CSS"] .bar { background: #cde6f9; }
+
+.skill[data-skill="JavaScript"] .skill-icon { background-image: url(../Portfolio2/resource/javascript-icon.svg);}
+.skill[data-skill="JavaScript"] .gauge { background: #f7df1e; }
+.skill[data-skill="JavaScript"] .bar { background: #fff6b3; }
+
+.skill[data-skill="Python"] .skill-icon { background-image: url(../Portfolio2/resource/python-icon.svg);}
+.skill[data-skill="Python"] .gauge { background: #3776ab; }
+.skill[data-skill="Python"] .bar { background: #c5dff6; }
+
+.skill[data-skill="React"] .skill-icon { background-image: url(../Portfolio2/resource/react-icon.svg);}
+.skill[data-skill="React"] .gauge { background: #61dafb; }
+.skill[data-skill="React"] .bar { background: #d3f6ff; }
+
+.skill[data-skill="SpringBoot"] .skill-icon { background-image: url(../Portfolio2/resource/springboot-icon.svg);}
+.skill[data-skill="SpringBoot"] .gauge { background: #6db33f; }
+.skill[data-skill="SpringBoot"] .bar { background: #cbeac3; }
+
+.skill[data-skill="SQL"] .skill-icon { background-image: url(../Portfolio2/resource/sql-icon.svg);}
+.skill[data-skill="SQL"] .gauge { background: #00758f; }
+.skill[data-skill="SQL"] .bar { background: #b3e5ec; }
 
 
+.skills-wrapper {
+  transition: transform 0.5s ease; /* 부드러운 애니메이션 */
+}
+.skill.placeholder {
+  opacity: 0;
+  pointer-events: none;
+  height: 115px; /* skillHeight랑 맞춰줘야 함 */
+}
+.skill {
+  margin: 15px 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.skill.dimmed {
+  opacity: 0.3;       /* 흐릿하게 */
+  transform: scale(0.9); /* 살짝 작아지게 */
+}
+.skill.focus {
+  opacity: 1;
+  transform: scale(1); /* 정중앙은 강조 */
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.skill.placeholder {
+  opacity: 0;           /* 보이지 않게 */
+  pointer-events: none; /* 클릭 안 됨 */
+}
 
 
 

@@ -12,6 +12,7 @@
   <header>
     <h1 class="title">Portfolio</h1>
   </header>
+
   <main>
     <div class="icon-container show">
       <div class="icon home" id="home"><span class="icon-text">Home</span></div>
@@ -23,6 +24,7 @@
       <div id="light" class="icon light glow"></div>
     </div>
   </main>
+
   <section id="about-panel" class="panel">  <!-- 테스트를위한임시 active -->
     <div class="carousel">
       <div class="carousel-track">
@@ -49,24 +51,90 @@
       </div>
     </div>
   </section>
+
   <section id="projects-panel" class="panel">
-    <div class="project1">
+    <div id="project-card1" class="project">
       project1
     </div>
-    <div class="project2">
+    <div id="project-card2" class="project">
       project2
     </div>
-    <div class="project3">
+    <div id="project-card3" class="project">
       project3
     </div>
   </section>
+
   <section id="skills-panel" class="panel">
-    <div id="skills1" class="skills">skills1</div>
-    <div id="skills2" class="skills">skills2</div>
-    <div id="skills3" class="skills">skills3</div>
-    <div id="skills4" class="skills">skills4</div>
-    <div id="skills5" class="skills">skills5</div>
+    <div class="skills-wrapper">
+      <!-- <div class="skill placeholder"></div> -->
+      <div class="skill" data-skill="Java">
+        <div class="bar">
+          <div class="skill-icon"></div>
+          <div class="gauge" percent="85%"></div>
+          <span class="percent">85%</span>
+        </div>
+      </div>
+
+      <div class="skill" data-skill="HTML">
+        <div class="bar">
+          <div class="skill-icon"></div>
+          <div class="gauge" percent="70%"></div>
+          <span class="percent">70%</span>
+        </div>
+      </div>
+
+      <div class="skill" data-skill="CSS">
+        <div class="bar">
+          <div class="skill-icon"></div>
+          <div class="gauge" percent="50%"></div>
+          <span class="percent">50%</span>
+        </div>
+      </div>
+
+      <div class="skill" data-skill="JavaScript">
+        <div class="bar">
+          <div class="skill-icon"></div>
+          <div class="gauge" percent="30%"></div>
+          <span class="percent">30%</span>
+        </div>
+      </div>
+
+      <div class="skill" data-skill="Python">
+        <div class="bar">
+          <div class="skill-icon"></div>
+          <div class="gauge" percent="0%"></div>
+          <span class="percent">0%</span>
+        </div>
+      </div>
+
+      <div class="skill" data-skill="React">
+        <div class="bar">
+          <div class="skill-icon"></div>
+          <div class="gauge" percent="0%"></div>
+          <span class="percent">0%</span>
+        </div>
+      </div>
+
+      <div class="skill" data-skill="SpringBoot">
+        <div class="bar">
+          <div class="skill-icon"></div>
+          <div class="gauge" percent="0%"></div>
+          <span class="percent">0%</span>
+        </div>
+      </div>
+
+      <div class="skill" data-skill="SQL">
+        <div class="bar">
+          <div class="skill-icon"></div>
+          <div class="gauge" percent="0%"></div>
+          <span class="percent">0%</span>
+        </div>
+      </div>
+
+      <div class="skill placeholder"></div>
+    </div>
   </section>
+
   <section id="contact-panel" class="panel">
     <div id="contact1" class="contact">contact1</div>
     <div id="contact2" class="contact">contact2</div>

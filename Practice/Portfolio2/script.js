@@ -26,7 +26,6 @@ icons.forEach(icon => {
         // 3단계: 제목/푸터 복원
         title.classList.remove("hide");
         footer.classList.remove("hide");
-
         // 커튼 다시 켜기
         if (lightOn) {
           showCurtain();
@@ -66,7 +65,6 @@ icons.forEach(icon => {
 
         container.classList.remove("hide");
         container.classList.add("left-align");
-
         const targetPanel = document.getElementById(`${icon.id}-panel`);
         if (targetPanel) targetPanel.classList.add("active");
       }, 500);
@@ -182,3 +180,53 @@ cards.forEach((card, i) => {
 
 // 초기 실행
 updateCarousel();
+
+
+
+// skills 패널 구역
+// 각각 게이지의 퍼센트를 찾아서 퍼센드별로 맞춤
+document.querySelectorAll(".gauge").forEach(g => {
+  let percent = g.getAttribute("percent"); // "10%"
+  let num = parseInt(percent); // 10
+
+  if(num <= 10){
+    g.style.width = '10%';
+  } else {
+    g.style.width = percent; // "70%" 같은 값 그대로 적용
+  }
+});
+
+// 애니메이션
+const panel = document.querySelector("#skills-panel");
+const wrapper = document.querySelector(".skills-wrapper");
+const skills = document.querySelectorAll(".skill");
+
+let currentIndex2 = 0; // 중앙에 올 스킬 인덱스
+const skillHeight = 115; // skill 하나 높이 (bar+margin)
+
+function updateSkills() {
+  wrapper.style.transform = `translateY(${-currentIndex2 * skillHeight}px)`;
+
+  skills.forEach((skill, i) => {
+    skill.classList.remove("focus", "dimmed");
+
+    if (i === currentIndex2) {
+      skill.classList.add("focus"); // 중앙 강조
+    } else {
+      skill.classList.add("dimmed"); // 나머지는 흐림
+    }
+  });
+}
+
+// 휠 이벤트
+document.body.addEventListener("wheel", (e) => {
+  if (e.deltaY > 0 && currentIndex2 < skills.length - 2) {
+    currentIndex2++;
+  } else if (e.deltaY < 0 && currentIndex2 > 0) {
+    currentIndex2--;
+  }
+  updateSkills();
+});
+
+// 초기 실행
+updateSkills();
