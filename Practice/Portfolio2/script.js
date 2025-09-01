@@ -181,7 +181,11 @@ cards.forEach((card, i) => {
 // 초기 실행
 updateCarousel();
 
-
+document.querySelectorAll('.project').forEach((project)=>{
+  project.addEventListener('click', () => {
+    project.classList.toggle('active');
+  });
+});
 
 // skills 패널 구역
 // 각각 게이지의 퍼센트를 찾아서 퍼센드별로 맞춤

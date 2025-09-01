@@ -7,14 +7,18 @@
   <title>Login SignIn</title>
 </head>
 <body>
-  <form class="container">
-    <input id="inputId" type="text" placeholder="ID를 입력하세요" autocomplete="off">
-    <input id="inputPw" type="password" placeholder="PW를 입력하세요" autocomplete="off">
-    <button id="loginbtn" onclick="login()">로그인</button>
-    <button id="signinbtn" onclick="signin()">회원가입</button>
-    <button id="findpassword" onclick="findpw()">비밀번호 찾기</button>
-  </form>
-
+  <div id="container" class="container">
+    <span class="input-container">
+      <input id="inputId" type="text" placeholder="ID를 입력하세요" autocomplete="off">
+      <input id="inputPw" type="password" placeholder="PW를 입력하세요" autocomplete="off">
+    </span>
+    <span class="button-container">
+      <button id="loginbtn">로그인</button>
+      <button id="signinbtn">회원가입</button>
+      <button id="findpassword">비밀번호 찾기</button>
+      <button id="deleteuser">회원 탈퇴</button>
+    </span>
+  </div>
   <script src="./script.js"></script>
 </body>
 </html>
