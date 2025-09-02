@@ -57,7 +57,8 @@ function login() {
     // 입력한 id pw 가 같으니 로그인 성공 알림
     
     succesLogin();
-    localStorage.setItem("login", "true");
+    const loginInfo = {login:"true",name:savedUser.name};
+    localStorage.setItem("login", JSON.stringify(loginInfo));
 
   } else {
     // 정보에 id가 같은건 있지만 pw가 틀렸음
@@ -105,6 +106,9 @@ function signin() {
   signIn.addEventListener('click', createAccount);
   // singIn 버튼에 이벤트 추가 / 클릭시 createAccount 라는 함수 실행
 
+
+
+
   const span = document.createElement('span');
   span.className = 'input-container';
 
@@ -130,9 +134,31 @@ function createAccount() {
     alert('비어있는 칸이 있습니다.');
     // 비어있는 칸이 있다면 알림
 
-    return signin();
+    return;
     // 다시 회원가입 페이지로 보냄
   }
+
+  // 입력값이 올바른지 확인하는곳
+  const regex = /^[가-힣]+$/;
+  const regexId = /^[a-zA-Z0-9]+$/;
+  if (!regex.test(username.value)) {
+    alert("이름은 한글만 입력 가능합니다.");
+    username.value = username.value.replace(/[^가-힣]/g, ""); 
+    username.style.boxShadow = '0 0 8px rgba(255, 31, 31, 1)';
+    return;
+    // 허용되지 않는 문자 제거
+  } else if (!regexId.test(createId.value)) {
+      alert("ID는 영어 소문자 대문자 숫자만 입력 가능합니다.");
+      createId.value = createId.value.replace(/[^a-zA-Z0-9]/g, "");
+      createId.style.boxShadow = '0 0 8px rgba(255, 31, 31, 1)';
+      return;
+  } else if (!regexId.test(createPw.value)) {
+      alert("PW는 영어 소문자 대문자 숫자만 입력 가능합니다.");
+      createPw.value = createPw.value.replace(/[^a-zA-Z0-9]/g, "");
+      createPw.style.boxShadow = '0 0 8px rgba(255, 31, 31, 1)';
+      return;
+  }
+
 
   let users = JSON.parse(localStorage.getItem("users")) || [];
   // localStorage에 있는 정보를 js객체로 바꿔 users에 배열로 저장하고 비어있으면 빈 배열로 저장
@@ -143,7 +169,7 @@ function createAccount() {
     alert("아이디가 이미 존재합니다.");
     // id가 같으면 이미 가입한 id기때문에 불가능하다 알림
 
-    return signin();
+    return;
     // 다시 회원가입 페이지로 보냄
   }
 
@@ -255,7 +281,7 @@ function deleteUser() {
     alert("입력된 정보가 잘못되었습니다.");
     // 잘못되었다 알림
 
-    leave();
+    return;
     // 다시 회원탈퇴 페이지로 보냄
   }
 
@@ -286,11 +312,8 @@ function deleteUser() {
       alert("입력된 정보가 잘못되었습니다.");
       // 잘못되었다 알림
 
-      leave();
+      return;
       // 다시 회원탈퇴 페이지로 보냄
-
-      break;
-      // 반복문 탈출
     }
   }
 }
@@ -305,31 +328,33 @@ function succesLogin() {
 
   forms.innerHTML = '';
   // forms안에 들어있는 HTML 을 '' 로 설정
-  const div = document.createElement('div');
-  div.className = 'logout-container';
+  // const div = document.createElement('div');
+  // div.className = 'logout-container';
 
-  const logoutBtn = document.createElement('button');
-  logoutBtn.id='logout';
-  logoutBtn.innerText = 'LOG OUT';
+  // const logoutBtn = document.createElement('button');
+  // logoutBtn.id='logout';
+  // logoutBtn.innerText = 'LOG OUT';
 
-  const img = document.createElement('img');
-  img.src = "../Portfolio2/resource/html-icon.svg";
-  img.alt = 'img';
+  // const img = document.createElement('img');
+  // img.src = "../Portfolio2/resource/html-icon.svg";
+  // img.alt = 'img';
   
-  const text = document.createElement('div');
-  text.innerText = '0';
-  text.className = 'img-text';
+  // const text = document.createElement('div');
+  // text.innerText = '0';
+  // text.className = 'img-text';
 
-  div.appendChild(logoutBtn);
-  div.appendChild(img);
-  div.appendChild(text);
-  forms.appendChild(div);
+  // div.appendChild(logoutBtn);
+  // div.appendChild(img);
+  // div.appendChild(text);
+  // forms.appendChild(div);
 
-  img.addEventListener('click', ()=>{
-    text.innerText++;
-  });
+  // img.addEventListener('click', ()=>{
+  //   text.innerText++;
+  // });
 
-  logoutBtn.addEventListener('click', logout);
+  // logoutBtn.addEventListener('click', logout);
+
+  location.href = '../Board/index.html';
 }
 
 function logout() {
@@ -339,7 +364,7 @@ function logout() {
 }
 
 window.addEventListener('load',()=>{
-  if(localStorage.getItem("login") === "true"){
+  if(localStorage.getItem("login").login === "true"){
     succesLogin();
   }
 });

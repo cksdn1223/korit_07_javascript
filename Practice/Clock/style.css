@@ -1,0 +1,86 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Orbitron', monospace;
+}
+
+.number-clock {
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  width: 100vw;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.hour{
+  color: red;
+}
+.minute{
+  color: blue;
+}
+.second{
+  color: green;
+}
+.clock {
+  position: relative;
+  width: min(52vw, 400px);  /* 브라우저가 크면 400px, 작으면 52vw */
+  height: min(52vw, 400px);
+  border-radius: 50%;
+  box-shadow: 1px 5px 15px;
+}
+
+
+.niddle span{
+  position: absolute;
+  width: 2px;
+  border-radius: 50%;
+  bottom: 50%;  right: 50%;
+  transform-origin: bottom;
+}
+.hours{
+  background: red;
+  height: 40%;
+  z-index: 1;
+}
+.minutes{
+  background: blue;
+  height: 45%;
+}
+.seconds{
+  background: green;
+  height: 48%;
+  z-index: 2;
+}
+
+.niddle .middle{
+  width: 5px;
+  height: 5px;
+  background: rgb(255, 255, 255);
+  transform: translate(50%, 50%);
+  z-index: 3;
+}
+.time .num {
+  position: absolute;
+  bottom: 45%;
+  right: 45%;
+  transform-origin: center;
+  font-size: 1.5em;
+  --angle: 0deg;
+  transform: rotate(var(--angle)) translate(22vw) rotate(calc(-1 * var(--angle)));
+}
+
+.time .num:nth-child(1)  { --angle: -90deg; }  /* 12시 */
+.time .num:nth-child(2)  { --angle: -60deg; }  /* 1시 */
+.time .num:nth-child(3)  { --angle: -30deg; }  /* 2시 */
+.time .num:nth-child(4)  { --angle: 0deg; }    /* 3시 */
+.time .num:nth-child(5)  { --angle: 30deg; }   /* 4시 */
+.time .num:nth-child(6)  { --angle: 60deg; }   /* 5시 */
+.time .num:nth-child(7)  { --angle: 90deg; }   /* 6시 */
+.time .num:nth-child(8)  { --angle: 120deg; }  /* 7시 */
+.time .num:nth-child(9)  { --angle: 150deg; }  /* 8시 */
+.time .num:nth-child(10) { --angle: 180deg; }  /* 9시 */
+.time .num:nth-child(11) { --angle: 210deg; }  /* 10시 */
+.time .num:nth-child(12) { --angle: 240deg; }  /* 11시 */
+

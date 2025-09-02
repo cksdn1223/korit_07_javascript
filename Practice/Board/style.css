@@ -5,3 +5,38 @@ body {
 nav {
   background: wheat;
 }
+
+/* 임시 CSS */
+textarea {
+  height: 25vh;
+  width: 99%;
+}
+input {
+  width: 99%;
+}
+button {
+  width: 100%;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  background-color: #d3d3d3;
+  padding: 10px;
+  border-bottom: 1px solid rgba(77, 77, 77, 0.596);
+}
+td {
+  border-bottom: 1px solid #d3d3d3;
+  padding: 10px;
+}
+td:not(:nth-child(2)){
+  text-align: center;
+}
+tr:hover {
+  background-color: #bdbdbd;
+}
