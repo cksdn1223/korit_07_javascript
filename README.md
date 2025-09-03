@@ -108,8 +108,3 @@ cd Practice/Portfolio2
 * 클라이언트 사이드 전용, 서버 의존성 없음
 * 학습용/실습용 구조 최적화
 * 각 프로젝트별 **핵심 함수 + 사용 예시 + 학습 포인트** 포함
-* Wiki 페이지 추천:
-
-  * [Overview](https://github.com/cksdn1223/korit_07_javascript/wiki/Overview)
-  * [Core Practice Projects](https://github.com/cksdn1223/korit_07_javascript/wiki/Core-Practice-Projects)
-  * [DOM Manipulation Patterns](https://github.com/cksdn1223/korit_07_javascript/wiki/DOM-Manipulation-Patterns)
