@@ -1,0 +1,261 @@
+@font-face {
+    font-family: 'OTEnjoystoriesBA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/OTEnjoystoriesBA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2") format('woff2'),
+    url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff") format('woff'),
+    url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf") format('opentype');
+}
+
+.a11y-hidden{
+    clip: rect(1px,1px,1px,1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    font-family: 'GmarketSansMedium';
+    background: #5B2386;
+    color: white;
+}
+
+header {
+    margin-top: 50px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+h1 .img_clock {
+    width: 256px;
+}
+h1 .img_title {
+    position: absolute;
+    width: 564px;
+    top: 120px;
+}
+
+/* 1만 시간의 법칙 설명 */
+.intro_saying {
+    font-family: 'OTEnjoystoriesBA';
+    font-size: 36px;
+    color: #F5DF4D;
+    margin-bottom: 50px;
+}
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quotes {
+    position: absolute;
+}
+
+.explain {
+    text-align: center;
+    line-height: 1.7;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.explain strong {
+    font-size: 24px;
+    font-family: 'GmarketSansMedium';
+    font-weight: 700;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    line-height: 16px;
+    font-weight: 400;
+    font-size: 24px;
+    font-family: 'GmarketSansMedium';
+}
+
+.inputs input{
+    font-size: 24px;
+    width: 165px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    margin: 5px;
+    line-height: 1.2;
+    line-height: 16px;
+    font-weight: 400;
+    font-size: 24px;
+    font-family: 'GmarketSansMedium';
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.click-text{
+    background-color: #FCEE21;
+    padding: 21px 49px;
+    border-radius: 56px;
+    color: #5B2386;
+    font-family: 'GmarketSansMedium';
+    font-weight: 700;
+    font-size: 24px;
+}
+.click-text:hover{
+    cursor: pointer;
+}
+
+.start img{
+    position: absolute;
+    display: flex;
+    transform: translateX(315px) translateY(15px);
+}
+
+@keyframes rotate {
+    50% {transform: rotate(180deg);}
+    100% {transform: rotate(360deg);}
+}
+.result {
+    animation: rotate 1.1s infinite linear;
+}
+
+.result_loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    gap: 24px;
+    font-family: 'GmarketSansMedium';
+    font-weight: 400;
+    line-height: 1.6;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+
+.pdo{
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 1;
+    vertical-align: middle;
+}
+.btn{
+    margin: 80px;
+}
+.btngo{
+    background-color: #FCEE21;
+    color: #5B2386;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.6;
+    padding: 21px 49px;
+    border-radius: 56px;
+    cursor: pointer;
+}
+.btngo:last-child{
+    background-color: white;
+}
+
+.sticker{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 30px;
+    width: 600px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    transform: translate(0%, -50%);
+    color: #5B2386;
+    font-family: 'OTEnjoystoriesBA';
+}
+.explains {
+    color: #747474;
+    font-size: 13px;
+    text-align: center;
+    font-family: 'GmarketSansBold';
+}
+.sticker-title{
+    font-weight: 700;
+    font-size: 96px;
+}
+.sticker-text{
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.close{
+    padding: 15px 40px;
+    font-weight: 700;
+    font-size: 24px;
+    border-radius: 56px;
+    display: flex;
+    align-items: center;
+    font-family: 'GmarketSansBold';
+    color: #5B2386;
+    background-color: #FCEE21;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 6px 16px 0px rgb(0 0 0 / 15%), 0px 5px 16px 0px rgb(0 0 0 / 15%);
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+    font-family: 'Noto Sans KR';
+    font-size: 12px;
+    font-weight: 400;
+}
