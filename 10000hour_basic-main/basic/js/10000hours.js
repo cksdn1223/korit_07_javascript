@@ -4,8 +4,8 @@ startBtn.addEventListener('click', ()=>{
   const doInput = document.getElementById('do').value;
   const trainingInput = document.getElementById('training').value;
   if (doInput=="" || trainingInput=="") return alert('비어있습니다.')
-  document.getElementById('result').classList.remove('a11y-hidden');
-  
+  document.getElementById('result').classList.toggle('a11y-hidden');
+  document.getElementById('result_loading').classList.add('a11y-hidden');
   
   setTimeout(() => {
     document.getElementById('result').classList.add('a11y-hidden');
@@ -25,6 +25,6 @@ document.getElementById('close').addEventListener('click',() => {
 });
 
 document.getElementById('share').addEventListener('click',()=>{
-  navigator.clipboard.writeText("사이트 링크");
+  navigator.clipboard.writeText(window.location.href);
   alert('URL이 복사되었습니다')
 });
